@@ -21,3 +21,11 @@ class UsersTests(APITestCase):
         self.assertEqual(response.status_code, 201)
         self.assertEqual(response.data, serializer.data)
         self.assertEqual(users.count(), 1)
+
+    def test_list_user(self):
+
+        response = self.client.get(reverse('user-list'))
+        users = UserSerializer(User.objects.all(), many = True)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.data, users.data)
