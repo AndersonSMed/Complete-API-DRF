@@ -10,3 +10,5 @@ Project made for use as a guide for those who are seeking to start creating a RE
   - `python3 manage.py migrate`
 4) And for last but not least, run the following command to run start your project:
   - `python3 manage.py runserver`
+5) If you want to run unit tests, just type the following command:
+  - `python3 manage.py test`
