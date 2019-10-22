@@ -29,3 +29,18 @@ class UsersTests(APITestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.data, users.data)
+
+    def test_detail_user(self):
+        
+        data = {
+            "username": "test",
+            "email": "test@test.com",
+            "password": "123456"
+        }
+
+        user = User.objects.create(**data)
+        serializer = UserSerializer(user, many = False)
+        response = self.client.get(reverse('user-detail', args=[user.pk]))
+        
+        self.assertEqual(response.data, serializer.data)
+        self.assertEqual(response.status_code, 200)
